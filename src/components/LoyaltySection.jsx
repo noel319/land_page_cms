@@ -1,5 +1,12 @@
 import React from 'react';
+import { useContent } from '../hooks/useContent';
 import { FiAward, FiCoffee, FiGift } from 'react-icons/fi';
+
+const iconMap = {
+  award: <FiAward />,
+  coffee: <FiCoffee />,
+  gift: <FiGift />,
+};
 
 const LoyaltyCard = ({ icon, title, description }) => (
   <div className="bg-white p-8 rounded-xl shadow-lg text-center transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-100">
@@ -12,6 +19,45 @@ const LoyaltyCard = ({ icon, title, description }) => (
 );
 
 const LoyaltySection = () => {
+  const { content, loading, error } = useContent('/content/loyalty.json');
+
+  // Fallback data if CMS content fails to load
+  const fallbackCards = [
+    {
+      id: "earn-points",
+      title: "Earn Points",
+      description: "1 point for every $1 spent. Points never expire and can be redeemed for free drinks and food.",
+      icon: "award"
+    },
+    {
+      id: "birthday-drink",
+      title: "Free Birthday Drink",
+      description: "Celebrate your special day with a drink on us! Plus, enjoy double points all month long.",
+      icon: "coffee"
+    },
+    {
+      id: "exclusive-rewards",
+      title: "Exclusive Rewards",
+      description: "Access to members-only events, early product releases, and special seasonal offers.",
+      icon: "gift"
+    }
+  ];
+
+  if (loading) {
+    return (
+      <div className="pt-8 pb-16 px-4 bg-gray-50 flex items-center justify-center min-h-[400px]">
+        <div className="text-gray-600">Loading loyalty program...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    console.warn('Loyalty loading error:', error);
+  }
+
+  // Use CMS content if available, otherwise use fallback
+  const loyaltyCards = content?.cards || fallbackCards;
+
   return (
     <section className="pt-8 pb-16 px-4 bg-gray-50">
       <div className="max-w-6xl mx-auto">
@@ -25,21 +71,14 @@ const LoyaltySection = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <LoyaltyCard 
-            icon={<FiAward />}
-            title="Earn Points"
-            description="1 point for every $1 spent. Points never expire and can be redeemed for free drinks and food."
-          />
-          <LoyaltyCard 
-            icon={<FiCoffee />}
-            title="Free Birthday Drink"
-            description="Celebrate your special day with a drink on us! Plus, enjoy double points all month long."
-          />
-          <LoyaltyCard 
-            icon={<FiGift />}
-            title="Exclusive Rewards"
-            description="Access to members-only events, early product releases, and special seasonal offers."
-          />
+          {loyaltyCards.map((card) => (
+            <LoyaltyCard 
+              key={card.id || card.title}
+              icon={iconMap[card.icon] || iconMap.award}
+              title={card.title}
+              description={card.description}
+            />
+          ))}
         </div>
         
         <div className="mt-16 text-center">

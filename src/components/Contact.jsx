@@ -1,6 +1,12 @@
 import React from 'react';
+import { useContent } from '../hooks/useContent';
 
 export default function Contact() {
+  const { content, loading, error } = useContent('/content/contact.json');
+
+  if (loading) return <div className="py-20 bg-gray-50 flex items-center justify-center min-h-[400px]"><div>Loading...</div></div>;
+  if (error) return <div className="py-20 bg-gray-50 flex items-center justify-center min-h-[400px]"><div>Error loading content</div></div>;
+
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,10 +18,12 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="bg-white p-8 rounded-xl shadow-sm">
             <h3 className="text-2xl font-semibold mb-6">Send us a message</h3>
-            <form className="space-y-4">
+            <form className="space-y-4" netlify netlify-honeypot="bot-field" name="contact">
+              <input type="hidden" name="form-name" value="contact" />
               <div>
                 <input 
                   type="text" 
+                  name="name"
                   placeholder="Your Name" 
                   required 
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" 
@@ -24,6 +32,7 @@ export default function Contact() {
               <div>
                 <input 
                   type="email" 
+                  name="email"
                   placeholder="Email Address" 
                   required 
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -32,6 +41,7 @@ export default function Contact() {
               <div>
                 <textarea 
                   rows="5" 
+                  name="message"
                   placeholder="Your Message" 
                   required 
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -71,7 +81,7 @@ export default function Contact() {
                   </svg>
                   <div>
                     <p className="font-medium">Visit Us</p>
-                    <p className="text-gray-600">125 Via Naranjas, Boca Raton, FL 33432</p>
+                    <p className="text-gray-600">{content?.address}</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -80,7 +90,7 @@ export default function Contact() {
                   </svg>
                   <div>
                     <p className="font-medium">Call Us</p>
-                    <p className="text-gray-600">(555) 123-4567</p>
+                    <p className="text-gray-600">{content?.phone}</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -89,7 +99,7 @@ export default function Contact() {
                   </svg>
                   <div>
                     <p className="font-medium">Email Us</p>
-                    <p className="text-gray-600">hello@espressojoint.com</p>
+                    <p className="text-gray-600">{content?.email}</p>
                   </div>
                 </div>
               </div>
@@ -100,15 +110,15 @@ export default function Contact() {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Monday - Friday</span>
-                  <span className="font-medium">7:00 AM - 8:00 PM</span>
+                  <span className="font-medium">{content?.hours?.weekdays}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Saturday</span>
-                  <span className="font-medium">8:00 AM - 8:00 PM</span>
+                  <span className="font-medium">{content?.hours?.saturday}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Sunday</span>
-                  <span className="font-medium">8:00 AM - 6:00 PM</span>
+                  <span className="font-medium">{content?.hours?.sunday}</span>
                 </div>
               </div>
             </div>

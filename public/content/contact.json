@@ -1,0 +1,10 @@
+{
+    "address": "125 Via Naranjas, Boca Raton, FL 33432",
+    "phone": "(555) 123-4567",
+    "email": "hello@espressojoint.com",
+    "hours": {
+      "weekdays": "7:00 AM - 8:00 PM",
+      "saturday": "8:00 AM - 8:00 PM",
+      "sunday": "8:00 AM - 6:00 PM"
+    }
+  }

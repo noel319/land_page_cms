@@ -1,0 +1,84 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "hero"
+        label: "Hero Section"
+        file: "public/content/hero.json"
+        fields:
+          - { name: "title", label: "Main Title", widget: "string" }
+          - { name: "subtitle", label: "Subtitle", widget: "text" }
+          - { name: "primaryButton", label: "Primary Button Text", widget: "string" }
+          - { name: "secondaryButton", label: "Secondary Button Text", widget: "string" }
+      
+      - name: "about"
+        label: "About Section"
+        file: "public/content/about.json"
+        fields:
+          - { name: "title", label: "Section Title", widget: "string" }
+          - { name: "paragraph1", label: "First Paragraph", widget: "text" }
+          - { name: "paragraph2", label: "Second Paragraph", widget: "text" }
+          - { name: "mainImage", label: "Main Image", widget: "image" }
+          - { name: "secondaryImage", label: "Secondary Image", widget: "image" }
+      
+      - name: "contact"
+        label: "Contact Information"
+        file: "public/content/contact.json"
+        fields:
+          - { name: "address", label: "Address", widget: "string" }
+          - { name: "phone", label: "Phone", widget: "string" }
+          - { name: "email", label: "Email", widget: "string" }
+          - { name: "hours", label: "Hours", widget: "object", fields: [
+              { name: "weekdays", label: "Monday - Friday", widget: "string" },
+              { name: "saturday", label: "Saturday", widget: "string" },
+              { name: "sunday", label: "Sunday", widget: "string" }
+            ]}
+
+      - name: "menu"
+        label: "Menu Categories"
+        file: "public/content/menu.json"
+        fields:
+          - name: "categories"
+            label: "Menu Categories"
+            widget: "list"
+            summary: "{{fields.name}} - {{fields.description}}"
+            fields:
+              - { name: "id", label: "ID (unique)", widget: "string", hint: "Use lowercase with dashes (e.g., cold-brew-coffee)" }
+              - { name: "name", label: "Category Name", widget: "string" }
+              - { name: "description", label: "Description", widget: "string" }
+              - { name: "icon", label: "Icon", widget: "select", options: [
+                  { label: "Coffee Cup", value: "coffee" },
+                  { label: "Juice Glass", value: "juice" },
+                  { label: "Smoothie", value: "smoothie" },
+                  { label: "Acai Bowl", value: "acai" },
+                  { label: "Salad", value: "salad" },
+                  { label: "Bowl", value: "bowl" },
+                  { label: "Panini", value: "panini" },
+                  { label: "Sandwich", value: "sandwich" }
+                ]}
+              - { name: "order", label: "Display Order", widget: "number", default: 1, min: 1, hint: "Lower numbers appear first" }
+
+      - name: "loyalty"
+        label: "Loyalty Program"
+        file: "public/content/loyalty.json"
+        fields:
+          - name: "cards"
+            label: "Loyalty Cards"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { name: "id", label: "ID (unique)", widget: "string", hint: "Use lowercase with dashes (e.g., birthday-rewards)" }
+              - { name: "title", label: "Card Title", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - { name: "icon", label: "Icon", widget: "select", options: [
+                  { label: "Award/Trophy", value: "award" },
+                  { label: "Coffee Cup", value: "coffee" },
+                  { label: "Gift Box", value: "gift" }
+                ]}

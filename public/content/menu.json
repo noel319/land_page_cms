@@ -1,0 +1,60 @@
+{
+    "categories": [
+      {
+        "id": "coffee",
+        "name": "Coffee",
+        "description": "Freshly brewed & specialty drinks",
+        "icon": "coffee",
+        "order": 1
+      },
+      {
+        "id": "cold-press-juice",
+        "name": "Cold Press Juice",
+        "description": "Fresh, cold-pressed juices",
+        "icon": "juice",
+        "order": 2
+      },
+      {
+        "id": "smoothie",
+        "name": "Smoothie",
+        "description": "Creamy & refreshing blends",
+        "icon": "smoothie",
+        "order": 3
+      },
+      {
+        "id": "acai",
+        "name": "Acai",
+        "description": "Nutrient-rich bowls",
+        "icon": "acai",
+        "order": 4
+      },
+      {
+        "id": "salads",
+        "name": "Salads",
+        "description": "Fresh & healthy options",
+        "icon": "salad",
+        "order": 5
+      },
+      {
+        "id": "healthy-bowls",
+        "name": "Healthy Bowls",
+        "description": "Wholesome & satisfying",
+        "icon": "bowl",
+        "order": 6
+      },
+      {
+        "id": "paninis",
+        "name": "Paninis",
+        "description": "Grilled to perfection",
+        "icon": "panini",
+        "order": 7
+      },
+      {
+        "id": "breakfast-sandwiches",
+        "name": "Breakfast Sandwiches",
+        "description": "Morning favorites all day",
+        "icon": "sandwich",
+        "order": 8
+      }
+    ]
+  }

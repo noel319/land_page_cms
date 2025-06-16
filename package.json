@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "netlify-cms-app": "^2.15.72",
+    "netlify-identity-widget": "^1.9.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0"
