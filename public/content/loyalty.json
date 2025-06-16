@@ -1,22 +1,28 @@
 {
-    "cards": [
-      {
-        "id": "earn-points",
-        "title": "Earn Points",
-        "description": "1 point for every $1 spent. Points never expire and can be redeemed for free drinks and food.",
-        "icon": "award"
-      },
-      {
-        "id": "birthday-drink",
-        "title": "Free Birthday Drink",
-        "description": "Celebrate your special day with a drink on us! Plus, enjoy double points all month long.",
-        "icon": "coffee"
-      },
-      {
-        "id": "exclusive-rewards",
-        "title": "Exclusive Rewards",
-        "description": "Access to members-only events, early product releases, and special seasonal offers.",
-        "icon": "gift"
-      }
-    ]
-  }
+  "cards": [
+    {
+      "id": "earn-points",
+      "title": "Earn Points",
+      "description": "1 point for every $1 spent. Points never expire and can be redeemed for free drinks and food.",
+      "icon": "award"
+    },
+    {
+      "id": "birthday-drink",
+      "title": "Free Birthday Drink",
+      "description": "Celebrate your special day with a drink on us! Plus, enjoy double points all month long.",
+      "icon": "coffee"
+    },
+    {
+      "id": "exclusive-rewards",
+      "title": "Exclusive Rewards",
+      "description": "Access to members-only events, early product releases, and special seasonal offers.",
+      "icon": "gift"
+    },
+    {
+      "id": "er",
+      "title": "er",
+      "description": "er",
+      "icon": "coffee"
+    }
+  ]
+}
