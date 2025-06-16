@@ -5,6 +5,9 @@
 [build.environment]
   NODE_VERSION = "18"
 
+[identity]
+  confirmation_page = "/admin/"
+  
 [[redirects]]
   from = "/*"
   to = "/index.html"
